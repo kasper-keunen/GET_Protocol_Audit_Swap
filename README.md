@@ -1,7 +1,7 @@
 # GET Protocol Klaytn Swap Contracts
 This repository contain the contracts that will facilitate the partial tokenswapping of the Guaranteed Entrance Token (issued by the GET Protocol) between the Ethereum Blockchain and the Klaytn Blockchain.
 
-####  Klaytn Blockchain Integration
+###  Klaytn x GET - Blockchain Integration
 The GET Protocol is an internationally operating ticketing protocol. It's native token, the Guaranteed Entrance Token, is the fuel required for ticketing operations to be included in the global smart ticketing ledger. The protocol is blockchain agnostic. Meaning that it can perform its value adding features for its clients on a wide array of blockchains. The client (generally ticketing companies) decide what blockchain is used to register and settle their business. 
 
 Purpose of contracts: The GET Protocol foundation is an integration partner with Klaytn. In light of this coorperation and request of integrators of the GET Protocol in Korea, there is demand there to be a representation of the GET token on the Klaytn blockchain. As the Etheruem blockchain and Klaytn blockchain have different ledgers, a mechanism is needed to 'move' GET_eth (GET on the Ethereum blocckhain) to GET_kct (GET on the Klaytn blockchain). The contracts in this repostitory serve this purpose.  
@@ -10,20 +10,22 @@ Purpose of contracts: The GET Protocol foundation is an integration partner with
 *GET_eth* -> ERC20 token of GET on the Ethereum blokchain. [GET_eth Contract Etherscan](https://etherscan.io/token/0x8a854288a5976036a725879164ca3e91d30c6a1b)   
 *GET_kct* -> KCT20 toekn of GET on the Klaytn blockchain [WILL BE ADDED](https://scope.klaytn.com/)   
 
-### About GET_eth 
+#### About GET_eth 
 GET_eth was minted in 2017 after a public crowdsale. GET is a regular ERC20 contract with a capped supply. The audit of the crowdsale contract can be found here (conducted by Ethereum Foundation Security developer Matthew Di Ferrante). The minting contract of GET_eth was finalized after the crowdsale. Due to this it is not possible to mint additional GET_eth.
 
 Audit report of crowdsale contract by Matthew Di Ferrante: https://github.com/mattdf/audits/tree/master/guts
 Audit report of ERC20 contract (after crowdsale was finalized): 
 
-### About GET_kct
+#### About GET_kct
 *GET_kct* is  the representation of GET on the Klaytn blockchain (essentially 'wrapped GET' - in a custodial manner). The process of receiving GET_eth custodially and then minting an equal amount of GET_kct is done 'manually' by an address that has been granted 'minter rights' -> a minterrole. 
 
-### About the Klaytn Blockchain
+#### About the Klaytn Blockchain
 Klaytn is an EVM compatible blockchain. For more information about Klaytn refer to the following documentation: https://docs.klaytn.com/klaytn. As noted the Klaytn blokchain has the same EVM as Ethereum. Thefefore the contracts in this repository can be interpreted as one would interpret a contract on ethereum (same EVM). 
 
-#### Compiler & Deployment
+##### Compiler & Deployment
 The Klaytn EVM compiler doesn't support the newest compiler versions of Solidity. Therefore contarcts in this repo will be used the tried and tested 0.5.0 version of Soliidty.  
+
+---
 
 ## Overview contracts 
 The majority of the contracts used are sourced from the [V.3.0 version of the Open Zeppeling contracts.](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.3.0/contracts/). The only contracts that have some edited code are       
@@ -34,7 +36,7 @@ Sourced from Open ZeppelinV2.3.0: https://github.com/OpenZeppelin/openzeppelin-c
 #### MinterRole.sol
 Sourced from Open ZeppelinV2.3.0: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.3.0/contracts/access/roles/MinterRole.sol. No changes made to the code. The address that initially deploys the MinterRole contract will be the assigned to be the first "Minter". 
 
-#### GET_ERC20.sol
+#### GET_kct.sol
 Standard contract inheriting a set of contracts and constructing/deploying it to the blockchain. 
 
 #### Roles.sol
