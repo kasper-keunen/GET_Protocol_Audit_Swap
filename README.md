@@ -4,23 +4,22 @@ This repository contain the contracts that will facilitate the partial tokenswap
 ###  Klaytn x GET - Blockchain Integration
 The GET Protocol is an internationally operating ticketing protocol. It's native token, the Guaranteed Entrance Token, is the fuel required for ticketing operations to be included in the global smart ticketing ledger. The protocol is blockchain agnostic. Meaning that it can perform its value adding features for its clients on a wide array of blockchains. The client (generally ticketing companies) decide what blockchain is used to register and settle their business. 
 
+## Blockchain Bridge Contracts 
+Purpose of contracts: The GET Protocol foundation is an integration partner with Klaytn. In light of this coorperation and request of integrators of the GET Protocol in Korea, there is demand there to be a representation of the GET token on the Klaytn blockchain. As the Etheruem blockchain and Klaytn blockchain have different ledgers, a mechanism is needed to 'move' GET_eth (GET on the Ethereum blocckhain) to GET_kct (GET on the Klaytn blockchain). The contracts in this repostitory serve the purpose of issuing GET on the Klaytn blockcahin. The diagram below shows this process in 2 steps.
+
 ---
 
 ![Diagram of Ethereum to Klaytn GET bridge](./images/klaytn_eth_kct_bridge.png)
 
+Step 1. Depositing GET with a Minter (EOA -> EOA)
+User send their ERC20 GET (issued on Ethereum) to the address specified by the MinterRole. This entity is likel a centralized exchanger. The user, notifies this exchanger (or equivalent) of their public key hash (wallet address) on  the Klaytn blockchain.
+
+Step 2. Minting GET_kct on the Klaytn blockchain (Contract -> EOA)
+The minter will use the GET_kct's swap contracts mint function to issue new GET_kct on the Klaytn blockchain. This newly minted GET_kct will be sent to the users wallet address on the Klaytn blockchain.
+
+
 ---
 
-
-## Blockchain Bridge Contracts 
-Purpose of contracts: The GET Protocol foundation is an integration partner with Klaytn. In light of this coorperation and request of integrators of the GET Protocol in Korea, there is demand there to be a representation of the GET token on the Klaytn blockchain. As the Etheruem blockchain and Klaytn blockchain have different ledgers, a mechanism is needed to 'move' GET_eth (GET on the Ethereum blocckhain) to GET_kct (GET on the Klaytn blockchain). The contracts in this repostitory serve this purpose.  
-
-#### GET Ethereum Mainnet
-[GET_eth Contract Etherscan 0x8a854288a5976036a725879164ca3e91d30c6a1b](https://etherscan.io/token/0x8a854288a5976036a725879164ca3e91d30c6a1b).   
-
-#### GET Klaytn Mainnet
-[GET_kct on Klaytn Mainnet 0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd](https://scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd?tabId=internalTx) KCT token of GET on the Klaytn blockchain. GET_kcy is a fungible token (KIP-7 standard).
-
----
 
 ## Completed Security Audits
  [Audit report of crowdsale contract by Matthew Di Ferrante.](https://github.com/mattdf/audits/tree/master/guts)   
@@ -28,10 +27,10 @@ Purpose of contracts: The GET Protocol foundation is an integration partner with
 
 ---
 
-## Swap contracts live on Klaytn Blockchain
-[Testnet Swap Contract:](https://baobab.scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd)
+## Swap contracts deployed on Klaytn Blockchain
+[Testnet Swap Contract 0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd:](https://baobab.scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd)
 
-[Mainnet Swap Contract:](https://scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd?tabId=internalTx)
+[Mainnet Swap Contract 0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd:](https://scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd?tabId=internalTx)
 
 *Contract verification pending*
 
@@ -98,5 +97,9 @@ If a address is granted minter rights it is able to mint GET_kct tokens. The amo
 ## Security Audit Inquiry
 To ensure the safety of the partial and continous token swap between GET_eth and GET_kct we would like to have a security audit performed. This audit mainly needs to focus on the "Minterrole.sol" contract. Beyond the management of the minters, there is to audit in these contracts beyond the obvious. 
 
+#### GET Ethereum Mainnet
+[GET_eth Contract Etherscan 0x8a854288a5976036a725879164ca3e91d30c6a1b](https://etherscan.io/token/0x8a854288a5976036a725879164ca3e91d30c6a1b).   
 
+#### GET Klaytn Mainnet
+KCT token of GET on the Klaytn blockchain. GET_kcy is a fungible token (KIP-7 standard). [GET_kct on Klaytn Mainnet 0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd](https://scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd?tabId=internalTx) 
 
