@@ -4,12 +4,18 @@ This repository contain the contracts that will facilitate the partial tokenswap
 ###  Klaytn x GET - Blockchain Integration
 The GET Protocol is an internationally operating ticketing protocol. It's native token, the Guaranteed Entrance Token, is the fuel required for ticketing operations to be included in the global smart ticketing ledger. The protocol is blockchain agnostic. Meaning that it can perform its value adding features for its clients on a wide array of blockchains. The client (generally ticketing companies) decide what blockchain is used to register and settle their business. 
 
+
+## Blockchain Bridge Contracts 
 Purpose of contracts: The GET Protocol foundation is an integration partner with Klaytn. In light of this coorperation and request of integrators of the GET Protocol in Korea, there is demand there to be a representation of the GET token on the Klaytn blockchain. As the Etheruem blockchain and Klaytn blockchain have different ledgers, a mechanism is needed to 'move' GET_eth (GET on the Ethereum blocckhain) to GET_kct (GET on the Klaytn blockchain). The contracts in this repostitory serve this purpose.  
 
-**Assets** 
 
-*GET_eth* -> ERC20 token of GET on the Ethereum blokchain. [GET_eth Contract Etherscan](https://etherscan.io/token/0x8a854288a5976036a725879164ca3e91d30c6a1b)   
-*GET_kct* -> KCT token of GET on the Klaytn blockchain [WILL BE ADDED](https://scope.klaytn.com/)   
+#### Ethereum Mainnet
+*GET_eth* -> 0x8a854288a5976036a725879164ca3e91d30c6a1b -> ERC20 token of GET on the Ethereum blokchain. [GET_eth Contract Etherscan](https://etherscan.io/token/0x8a854288a5976036a725879164ca3e91d30c6a1b).   
+
+#### Klaytn Mainnet
+KCT token of GET on the Klaytn blockchain. GET_kcy is a fungible token (KIP-7 standard).
+*GET_kct* -> 0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd 
+[GET_kct on Klaytn Mainnet](https://scope.klaytn.com/account/0xed2b243e561f4d9f2b708d2b2b83cf2ae0eb0fbd?tabId=internalTx) At the moment there is no GET_kcy minted yet, as the partial swap hasn't occured yet.
 
 ### Completed Audits
  [Audit report of crowdsale contract by Matthew Di Ferrante.](https://github.com/mattdf/audits/tree/master/guts)   
